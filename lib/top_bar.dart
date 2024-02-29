@@ -14,31 +14,38 @@ class TopBar extends StatelessWidget {
       builder: (_, WidgetRef ref, __) {
         final settingsOpened = ref.watch(settingsState);
         return settingsOpened
-            ? AnimatedContainer(
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
-                child: Column(
-                  children: [
-                    Text(
-                      "Settings",
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        fontSize: 20,
+            ? SingleChildScrollView(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeInOut,
+                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 10),
+                  child: Column(
+                    children: [
+                      Text(
+                        "Settings",
+                        style: TextStyle(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                          fontSize: 20,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 60),
-                    segmentedSpeed(),
-                  ],
+                      const SizedBox(height: 60),
+                      segmentedSpeed(),
+                    ],
+                  ),
                 ),
               )
-            : Center(
-                child: Text(
-                  "Music",
-                  style: TextStyle(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontSize: 22,
-                    fontFamily: "Roboto",
+            : SingleChildScrollView(
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 300),
+                  child: Center(
+                    child: Text(
+                      "Music",
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        fontSize: 22,
+                        fontFamily: "Roboto",
+                      ),
+                    ),
                   ),
                 ),
               );
